@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="UTF-8"></meta>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <style>
+            h2 {
+              color: white;
+              text-shadow: 2px 2px 4px #000000;
+            }
+
+            .column{
+                float: left;
+                padding: 16px;
+                color: black;
+            }
+
+            .row:after{
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+            .glow {
+              font-size: 80px;
+              color: whitesmoke;
+              text-align: center;
+              -webkit-animation: glow 1s ease-in-out infinite alternate;
+              -moz-animation: glow 1s ease-in-out infinite alternate;
+              animation: glow 1s ease-in-out infinite alternate;
+            }
+
+            @-webkit-keyframes glow {
+              from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #EBF5FB, 0 0 40px #D6EAF8  , 0 0 50px #85C1E9 , 0 0 60px #3498DB  , 0 0 70px #21618C  ;
+              }
+
+              to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #D6DBDF  , 0 0 40px #AEB6BF  , 0 0 50px #566573  , 0 0 60px #283747  , 0 0 70px #1C2833, 0 0 80px #1C2833  ;
+              }
+            }
+
+            div.transbox {
+                position: absolute;
+                float: left;
+                padding: 20px;
+              margin: 10px;
+              background-color: #ffffff;
+              border: 3px solid black;
+              opacity: 0.5;
+              filter: alpha(opacity=50); /* For IE8 and earlier height: 320px;*/
+            }
+
+
+            .button {
+              display: inline-block;
+              border-radius: 4px;
+              background-color: darkblue;
+              border: none;
+              color:#fff;
+              text-align: center;
+              font-size: 16px;
+              padding: 10px;
+              width: 100px;
+              transition: all 0.5s;
+              cursor: pointer;
+              margin: 5px;
+
+
+            }
+
+            .button:hover {background-color: #6666ff}
+
+            .button:active {
+              background-color: #3e8e41;
+              box-shadow: 0 5px #666;
+              transform: translateY(4px);
+            }
+        </style>
+        <title>BookWorm: Login</title>
+    </h:head>
+    <h:body style="background:url(Backgrounds/bg.jpg);background-size: 100%;background-repeat: no-repeat;">
+        <h:form id="form1" rendered="#{loginController.checkLogin()}">
+        <script>
+            window.location.replace("http://localhost:8080/bookworm-war/faces/index.xhtml");
+        </script>
+        </h:form>
+        <h2 class= "glow" style="color:#000066; font: Helvetica; font-size: 300%">BookWorm</h2>
+        <br></br><br></br><br></br><br></br>
+
+        <!--<script>  
+            function validateform(){  
+            var name=document.myform.FirstName.value; 
+            var password=document.myform.Password.value;  
+
+            if (name===null || name===""){  
+              alert("Name can't be blank");  
+              return false;  
+            }else if(password.length<6){  
+              alert("Password must be at least 6 characters long.");  
+              return false;  
+              }  
+            }  
+        </script>-->
+        
+        <div class="row">
+            <div class="column" style="width: 29.5%; opacity: 1"></div>
+            <div class="column" style="width: 30%;">  
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                <div class="transbox" style="width: 30%">
+                    <h2 align="center" style="color:black" ><b> Login Form </b></h2> <br></br> <!--blueviolet-->
+                    <p align="center">
+                        <f:view>
+                            <h:form>
+                                <p align="center">
+                                    <h:outputLabel value="UserName:" for="userName" />&nbsp;&nbsp;
+                                    <h:inputText id="userName" value="#{loginController.login.userName}" title="UserName" required="true" requiredMessage="The UserName field is required."/><br></br><br></br>
+                                    <h:outputLabel value="Password:" for="password" />&nbsp;&nbsp;&nbsp;
+                                    <h:inputSecret id="password" value="#{loginController.login.password}" title="Password" required="true" requiredMessage="The Password field is required."/><br></br><br></br><br></br><br></br>
+                                    <h:commandButton value="Login" action="#{loginController.validateLogin()}"></h:commandButton>
+                                </p>
+                            </h:form>
+                        </f:view>
+                        
+
+                    </p>
+                <div align="center"  >
+                <h4>Don't have an account?</h4>
+                <h:form><h:inputText id="propertyIdlogout" readonly="true" value="#{loginController.logOut()}" style="display:none"/></h:form>
+                <a href="signup.xhtml">Sign up</a>
+                </div>
+                </div>
+            </div>
+        </div>
+        
+    </h:body>
+</html>
+

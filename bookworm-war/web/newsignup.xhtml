@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="FirstName:" for="firstName" />
+                    <h:inputText id="firstName" value="#{signupController.profile.firstName}" title="FirstName" />
+                    <h:outputLabel value="LastName:" for="lastName" />
+                    <h:inputText id="lastName" value="#{signupController.profile.lastName}" title="LastName" />
+                    <h:outputLabel value="Age:" for="age" />
+                    <h:inputText id="age" value="#{signupController.profile.age}" title="Age" />
+                    <h:outputLabel value="Email:" for="email" />
+                    <h:inputText id="email" value="#{signupController.profile.email}" title="Email" />
+                    <h:outputLabel value="Gender:" for="gender" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <h:selectOneMenu id="gender" value="#{signupController.profile.gender}" title="Gender" required="true" requiredMessage="The gender field is required.">
+                        <f:selectItem itemValue = "Male" itemLabel = "Male" /> 
+                        <f:selectItem itemValue = "Female" itemLabel = "Female" /> 
+                    </h:selectOneMenu><br></br><br></br><br></br><br></br>
+                    <h:outputLabel value="UserName:" for="userName" />&nbsp;&nbsp;
+                    <h:inputText id="userName" value="#{signupController.login.userName}" title="UserName" required="true" requiredMessage="The UserName field is required."/><br></br><br></br>
+                    <h:outputLabel value="Password:" for="password" />&nbsp;&nbsp;&nbsp;
+                    <h:inputSecret id="password" value="#{signupController.login.password}" title="Password" required="true" requiredMessage="The password field is required." />
+                    <br></br><br></br><br></br><br></br>
+                    <h:commandButton value="save" action="#{signupController.add()}"></h:commandButton>
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+
